@@ -25,7 +25,11 @@ const createUser = (req, res) => {
       res.redirect("/");
     } else {
       console.log(req.body);
-      const newUser = req.body;
+      // const newUser = req.body;
+      const newUser={ username : uname.trim(),
+                      password : password.trim(),
+                      email : email.trim()
+      }
       users.push(newUser);
       req.session.user = uname;
       fs.writeFile("./models/user.json", JSON.stringify(users), (err) => {});
